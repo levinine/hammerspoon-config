@@ -1,3 +1,6 @@
+# IntelliJ Ideal Local Files
+.idea/
+
 # Compiled Lua sources
 luac.out
 

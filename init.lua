@@ -1,0 +1,361 @@
+local alert = require 'hs.alert'
+
+
+local buf = {}
+
+-- Load SpoonInstall, so we can easily load our other Spoons
+hs.loadSpoon("SpoonInstall")
+spoon.SpoonInstall.use_syncinstall = true
+Install=spoon.SpoonInstall
+
+
+if hs.wasLoaded == nil then
+    hs.wasLoaded = true
+    table.insert(buf, "Hammerspoon loaded.")
+else
+    table.insert(buf, "Hammerspoon re-loaded. ")
+end
+
+alert.show(table.concat(buf))
+
+
+
+
+
+local log = hs.logger.new('main', 'info')
+local HYPER = { "cmd", "alt", "ctrl", "shift" }
+
+
+
+--wifi watcher
+wifiMenu = hs.menubar.newWithPriority(2147483645)
+wifiMenu:setTitle(string.sub(hs.wifi.currentNetwork(), 0, 5))
+
+nsBedroomSSID = "IzvorInterneta"
+nsLivingRoomSSID = "Tenda_48353C"
+saBedroomSSID = "devolo-f4068d4eb428"
+saLivingRoomSSID = "Ljuba"
+
+function wifiClicked()
+    local wifiName = hs.wifi.currentNetwork()
+    if wifiName == saBedroomSSID then
+        hs.wifi.associate(saLivingRoomSSID, "xxx")
+    end
+	if wifiName == saLivingRoomSSID then
+            hs.wifi.associate(saBedroomSSID, "xxx")
+        end
+    if wifiName == nsLivingRoomSSID then
+            hs.wifi.associate(nsBedroomSSID, "xxx")
+        end
+    if wifiName == nsBedroomSSID then
+            hs.wifi.associate(nsLivingRoomSSID, "xxx")
+        end
+end
+
+wifiMenu:setClickCallback(wifiClicked)
+
+wifiWatcher = nil
+
+function ssidChanged()
+    local wifiName = hs.wifi.currentNetwork()
+    if wifiName then
+        wifiMenu:setTitle(string.sub(wifiName, 0, 5))
+    else
+        wifiMenu:setTitle("Wifi OFF")
+    end
+end
+
+wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
+
+--Audio device switch-----
+function toggle_audio_output()
+  return function()
+  local current = hs.audiodevice.defaultOutputDevice()
+  local speakers = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
+  local headphones = hs.audiodevice.findOutputByName('External Headphones')
+
+  if not speakers or not headphones then
+      hs.notify.new({title="Hammerspoon", informativeText="ERROR: Some audio devices missing", ""}):send()
+      return
+  end
+
+  if current:name() == speakers:name() then
+      headphones:setDefaultOutputDevice()
+  else
+      speakers:setDefaultOutputDevice()
+  end
+  --hs.notify.new({
+        --title='Hammerspoon',
+       --   informativeText='Default output device: '..hs.audiodevice.defaultOutputDevice():name()
+     -- }):send()
+    end
+end
+
+hs.hotkey.bind(HYPER, "]", toggle_audio_output())
+--Audio device switch-----
+
+
+--audio watcher
+audioMenu = hs.menubar.newWithPriority(2147483646)
+
+
+function audioChanged()
+	audioMenu:setTitle(getCurrentOutputDevicePrefix())
+end
+
+function getCurrentOutputDevicePrefix()
+	return string.sub(hs.audiodevice.defaultOutputDevice():name(), 0, 3)
+end
+
+audioMenu:setTitle(audioChanged())
+hs.audiodevice.watcher.setCallback(audioChanged)
+hs.audiodevice.watcher.start()
+audioMenu:setClickCallback(toggle_audio_output())
+
+--capslock
+
+hs.hotkey.bind(HYPER, "0", function()
+  hs.reload()
+end)
+hs.notify.new({title="Hammerspoon", informativeText="Config loaded"}):send()
+
+hs.window.animationDuration = 0
+hs.hotkey.bind(HYPER, "h", function() -- H left 50%
+  local win = hs.window.focusedWindow();
+  if not win then return end
+win:moveToUnit(hs.layout.left50)
+end)
+-- hs.hotkey.bind(HYPER, "j", function()  -- J maximize
+--   local win = hs.window.focusedWindow();
+--   if not win then return end
+-- win:moveToUnit(hs.layout.maximized)
+-- end)
+hs.hotkey.bind(HYPER, "l", function() -- L right  50%
+  local win = hs.window.focusedWindow();
+  if not win then return end
+win:moveToUnit(hs.layout.right50)
+end)
+
+
+function hyperFocusOrOpen(key, app)
+    local focus = mkFocusByPreferredApplicationTitle(true, app)
+    function focusOrOpen()
+      return (focus() or hs.application.launchOrFocus(app))
+    end
+    hs.hotkey.bind(HYPER, key, focusOrOpen)
+  end
+
+  -- focus on the last-focused window of the first application given by name
+  function hyperFocus(key, ...)
+    hs.hotkey.bind(HYPER, key, mkFocusByPreferredApplicationTitle(true, ...))
+  end
+
+  -- focus on the last-focused window of every application given by name
+function hyperFocusAll(key, ...)
+    hs.hotkey.bind(HYPER, key, mkFocusByPreferredApplicationTitle(false, ...))
+  end
+
+
+  -- creates callback function to select application windows by application name
+  function mkFocusByPreferredApplicationTitle(stopOnFirst, ...)
+    local arguments = {...} -- create table to close over variadic args
+    return function()
+      local nowFocused = hs.window.focusedWindow()
+      local appFound = false
+      for _, app in ipairs(arguments) do
+        if stopOnFirst and appFound then break end
+        log:d('Searching for app ', app)
+        local application = hs.application.get(app)
+        if application ~= nil then
+          log:d('Found app', application)
+          local window = application:mainWindow()
+          if window ~= nil then
+            log:d('Found main window', window)
+            if window == nowFocused then
+              log:d('Already focused, moving on', application)
+            else
+              window:focus()
+              appFound = true
+            end
+          end
+        end
+      end
+      return appFound
+    end
+  end
+
+local applicationHotkeys = {
+    a = 'Activity monitor',
+    w = 'WebStorm',
+    b = 'Brave Browser',
+    g = 'Google Chrome',
+    c = 'Visual Studio Code',
+    f = 'Franz',
+    t = 'Microsoft Teams',
+    e = 'Microsoft OneNote',
+--     e = 'Microsoft Excel',
+    v = 'Viber',
+    s = 'Spotify',
+    p = 'Postman',
+    z = 'zoom.us',
+    r = 'MacPass',
+    y = 'Jira',
+--     ['\\'] = "Hammerspoon"
+  }
+  for key, app in pairs(applicationHotkeys) do
+    -- hs.hotkey.bind(HYPER, key, function()
+    --   hs.application.launchOrFocus(app)
+    hyperFocusOrOpen(tostring(key), app)
+  end
+
+
+
+-- move window
+function moveWindowToDisplay(d)
+    return function()
+      local displays = hs.screen.allScreens()
+      local win = hs.window.focusedWindow()
+      if win:isFullScreen() then
+          win:setFullScreen(false)
+          win:moveToScreen(displays[d], false, true)
+
+          hs.timer.doAfter(0.6, function()
+              win:focus()
+          end)
+          hs.timer.doAfter(0.6, function()
+              win:setFullScreen(true)
+          end)
+      else
+        win:moveToScreen(displays[d], false, true)
+       win:focus()
+      end
+    end
+  end
+
+  hs.hotkey.bind(HYPER, "1", moveWindowToDisplay(3))
+  hs.hotkey.bind(HYPER, "2", moveWindowToDisplay(1))
+  hs.hotkey.bind(HYPER, "3", moveWindowToDisplay(2))
+
+-- ms teams unmute - capslosck + space ----------------------------------------------------------
+
+KEYSTROKE_DURATION = 1 -- A one-microsecond delay worked for me YMMV
+PUSH_TO_TALK_KEY = "space"
+
+-- Microsoft Teams Push-to-Talk
+function toggleMute()
+    --currentApp = hs.application.frontmostApplication()
+    teamsApps = hs.application.applicationsForBundleID('com.microsoft.teams')
+    teamsApp = teamsApps[1]
+    teamsApp:activate()
+    hs.eventtap.keyStroke({"shift", "cmd"}, "m", KEYSTROKE_DURATION)
+    --currentApp:activate()
+end
+
+hs.hotkey.bind(HYPER, PUSH_TO_TALK_KEY, toggleMute)
+
+----
+function splitWindowPopup()
+    return function()
+        local windows = hs.fnutils.map(hs.window.filter.default:getWindows(), function(win)
+            if win ~= hs.window.focusedWindow() then
+                return {
+                    text = win:title(),
+                    subText = win:application():title(),
+                    image = hs.image.imageFromAppBundle(win:application():bundleID()),
+                    id = win:id()
+                }
+            end
+        end)
+
+        local chooser = hs.chooser.new(function(choice)
+            if choice ~= nil then
+                local layout = {}
+                local focused = hs.window.focusedWindow()
+                local toRead = hs.window.find(choice.id)
+                if hs.eventtap.checkKeyboardModifiers()['alt'] then
+                    hs.layout.apply({
+                        { nil, focused, focused:screen(), hs.layout.left70, 0, 0 },
+                        { nil, toRead, focused:screen(), hs.layout.right30, 0, 0 }
+                    })
+                else
+                    hs.layout.apply({
+                        { nil, focused, focused:screen(), hs.layout.left50, 0, 0 },
+                        { nil, toRead, focused:screen(), hs.layout.right50, 0, 0 }
+                    })
+                end
+                toRead:raise()
+                focused:focus()
+            end
+        end)
+
+        chooser:placeholderText("Choose window for 50/50 split. Hold ⎇ for 70/30."):searchSubText(true):choices(windows):show()
+    end
+end
+
+    hs.hotkey.bind(HYPER, 'm', splitWindowPopup())
+-----
+
+
+--Keyboard layout switch-----
+function setLayout(layoutStr)
+  return function()
+  hs.keycodes.setLayout(layoutStr)
+  end
+end
+
+hs.hotkey.bind(HYPER, "4", setLayout("x_layout"))
+hs.hotkey.bind(HYPER, "5", setLayout("Serbian - Latin"))
+hs.hotkey.bind(HYPER, "6", setLayout("Serbian"))
+
+--Keyboard layout switch-----
+
+
+-- tunnelblick bind
+function connectToUnityVpn()
+    return function()
+        hs.loadSpoon("Tunnelblick")
+        hs.loadSpoon("Keychain")
+        spoon.Tunnelblick.connection_name = "Unity-VPN-config"
+        spoon.Tunnelblick.username = "f.stanisic"
+        spoon.Tunnelblick.password_fn = function()
+        local item = spoon.Keychain:getItem{
+            account = "f.stanisic" }
+        return item.password
+          end
+        spoon.Tunnelblick:connect()
+    end
+end
+
+hs.hotkey.bind(HYPER, 'u', connectToUnityVpn())
+
+function connectToLevi9Vpn()
+    return function()
+        hs.loadSpoon("Tunnelblick")
+        hs.loadSpoon("Keychain")
+        spoon.Tunnelblick.connection_name = "Levi9_OpenVPN"
+        spoon.Tunnelblick.username = "f.stanisic@levi9.com"
+        spoon.Tunnelblick.password_fn = function()
+            local item = spoon.Keychain:getItem{
+                comment = "Tunnelblick-Auth-Levi9_OpenVPN" }
+            return item.password
+        end
+        spoon.Tunnelblick:connect()
+    end
+end
+
+
+
+hs.hotkey.bind(HYPER, 'l', connectToLevi9Vpn())
+
+-- ------ paste token------------------------------------------------------------------------------------------------------------------------
+--    hs.hotkey.bind(
+--        HYPER, "y", function()
+--        hs.pasteboard.setContents("Bearer token")
+--        hs.eventtap.keyStroke("cmd", "v")
+--    end)
+
+
+
+Install:andUse("MouseCircle", { hotkeys = { show = { HYPER, "d" }}})
+-- Draw pretty rounded corners on all screens
+Install:andUse("RoundedCorners", { start = true })
