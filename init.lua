@@ -6,12 +6,15 @@ local HYPER = { "cmd", "alt", "ctrl", "shift" }
 col = hs.drawing.color.x11
 local wm=hs.webview.windowMasks
 
-hs.loadSpoon("Tunnelblick")
-hs.loadSpoon("Keychain")
+
 hs.loadSpoon("SpoonInstall")
 
 spoon.SpoonInstall.use_syncinstall = true
 Install=spoon.SpoonInstall
+
+Install:andUse("Tunnelblick")
+Install:andUse("Keychain")
+Install:andUse("HoldToQuit", { start = true })
 
 function loadKeychainPasswordByComment(comment)
     local item = spoon.Keychain:getItem{comment = comment }
