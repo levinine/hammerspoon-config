@@ -363,13 +363,13 @@ hs.hotkey.bind(HYPER, 'l', connectToLevi9Vpn())
 -- ---paste token
 
 
------- MouseCircle, rounded corners
+--- MouseCircle, rounded corners
 Install:andUse("MouseCircle", { hotkeys = { show = { HYPER, "d" }}})
 -- Draw pretty rounded corners on all screens
 Install:andUse("RoundedCorners", { start = true })
------- MouseCircle, rounded corners
+--- MouseCircle, rounded corners
 
------- translation popup
+--- translation popup
 Install:andUse("PopupTranslateSelection",
         {
             config = {
@@ -381,4 +381,9 @@ Install:andUse("PopupTranslateSelection",
             }
         }
 )
------- translation popup
+--- translation popup
+
+--- HoldToQuit
+Install:andUse("HoldToQuit", { start = true })
+spoon.HoldToQuit:start()
+--- HoldToQuit
