@@ -1,5 +1,7 @@
 # IntelliJ Ideal Local Files
 .idea/
+# Spoons dir
+Spoons/
 
 # Compiled Lua sources
 luac.out
