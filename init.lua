@@ -91,15 +91,16 @@ function toggle_audio_output()
   return function()
   local current = hs.audiodevice.defaultOutputDevice()
   local speakers = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
-  local headphones = hs.audiodevice.findOutputByName('External Headphones')
+  --local headphones = hs.audiodevice.findOutputByName('External Headphones')
+  local galaxyBuds = hs.audiodevice.findOutputByName('Galaxy Buds+ (E83A)')
 
-  if not speakers or not headphones then
+  if not speakers or not galaxyBuds then
       hs.notify.new({title="Hammerspoon", informativeText="ERROR: Some audio devices missing", ""}):send()
       return
   end
 
   if current:name() == speakers:name() then
-      headphones:setDefaultOutputDevice()
+      galaxyBuds:setDefaultOutputDevice()
   else
       speakers:setDefaultOutputDevice()
   end
