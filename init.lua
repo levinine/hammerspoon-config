@@ -233,8 +233,6 @@ local applicationHotkeys = {
     h = 'Hammerspoon',
   }
   for key, app in pairs(applicationHotkeys) do
-    -- hs.hotkey.bind(HYPER, key, function()
-    --   hs.application.launchOrFocus(app)
     hyperFocusOrOpen(tostring(key), app)
   end
 ---capslock shortcuts
