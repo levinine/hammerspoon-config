@@ -1,4 +1,4 @@
-A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
+## A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) by [fstanisic](https://github.com/fstanisic)
 
 ## Requirements
 
