@@ -65,3 +65,34 @@ end
 
 hs.hotkey.bind(HYPER, 'm', splitWindowPopup())
 ----splitWindowPopup
+
+--- change window size using arrows
+hs.window.animationDuration = 0
+hs.hotkey.bind(HYPER, "Left", function() -- left 50%
+    local win = hs.window.focusedWindow();
+    if not win then return end
+    win:moveToUnit(hs.layout.left50)
+end)
+hs.hotkey.bind(HYPER, "Up", function()  -- Up - toggle fullscreen
+    local win = hs.window.focusedWindow();
+    if not win then return end
+    win:setFullScreen(not win:isFullScreen())
+end)
+hs.hotkey.bind(HYPER, "Down", function()  -- Down - size focused window to middle third of display
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w
+    f.h = max.h
+    win:setFrame(f)
+end)
+hs.hotkey.bind(HYPER, "Right", function() -- right  50%
+    local win = hs.window.focusedWindow();
+    if not win then return end
+    win:moveToUnit(hs.layout.right50)
+end)
+--- change window size using arrows

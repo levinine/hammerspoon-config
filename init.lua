@@ -33,9 +33,10 @@ end
 alert.show(table.concat(buf))
 ---init
 
-require 'audio-device-watcher'
+require 'audio-watcher'
 require 'wifi-watcher'
 require 'hyper-bindings'
+require 'teams-toggle-mute'
 require 'window-management'
 require 'keyboard-layout-switcher'
 require 'vpn'
