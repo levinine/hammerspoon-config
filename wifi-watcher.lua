@@ -31,7 +31,7 @@ saBedroomSSID = "devolo-f4068d4eb428"
 saLivingRoomSSID = "Ljuba"
 
 function loadPasswordAndConnectToWifiNetwork(ssid)
-    hs.wifi.associate(ssid, loadKeychainPasswordByComment(ssid))
+    hs.wifi.associate(ssid, loadKeychainPasswordByAccount(ssid))
 end
 
 function wifiClicked()
