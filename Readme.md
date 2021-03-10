@@ -6,13 +6,13 @@ A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
 ## How to use it
 
-1. Install [[http://www.hammerspoon.org/][Hammerspoon]]
+1. Install [Hammerspoon](http://www.hammerspoon.org/)
 
 2. Clone this repository into your ~/.hammerspoon directory:
    
        git clone git@github.com:levinine/hammerspoon-config.git ~/.hammerspoon
 
-3. Review [[file:init.lua][init.lua]] and change or disable any Spoons as needed.
+3. Review [init.lua](./init.lua) and change or disable any features as needed.
 
 4. Run Hammerspoon. All the necessary Spoons will be downloaded, installed and configured automatically
 
