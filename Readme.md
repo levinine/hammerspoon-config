@@ -17,7 +17,7 @@ A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 4. Run Hammerspoon. All the necessary Spoons will be downloaded, installed and configured automatically
 
 
-# Features
+## Features
 * [Hyper bindings](./hyper-bindings.lua)
   * Binds multiple hotkeys to run various apps
 * [Teams toggle mute](./teams-toggle-mute.lua)
