@@ -12,7 +12,6 @@ function hyperFocusOrOpen(key, app)
     hs.hotkey.bind(HYPER, key, focusOrOpen)
 end
 
-
 -- creates callback function to select application windows by application name
 function mkFocusByPreferredApplicationTitle(stopOnFirst, ...)
     local arguments = {...} -- create table to close over variadic args

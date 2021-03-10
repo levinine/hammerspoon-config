@@ -3,6 +3,7 @@
 ## Requirements
 
 - [Karabiner-elements](https://karabiner-elements.pqrs.org/) is required to bind Capslock key (or any other of your choice) to the Hyper key
+- Go to System Preferences -> Security & Privacy -> Privacy and add both Hammerspoon and Karabiner-Elements in the Accessibility tab
 
 ## How to use it
 
