@@ -1,0 +1,7 @@
+-- ---paste token
+--    hs.hotkey.bind(
+--        HYPER, "y", function()
+--        hs.pasteboard.setContents("Bearer token")
+--        hs.eventtap.keyStroke("cmd", "v")
+--    end)
+-- ---paste token
