@@ -67,7 +67,8 @@ end
 
 
 ssidChanged()
---wifiMenu:setTitle(string.sub(hs.wifi.currentNetwork(), 0, 5))
+--check is lan connected every 2 minutes
+lanConnectedTimer = hs.timer.new(120, ssidChanged):start()
 
 nsBedroomSSID = "IzvorInterneta"
 nsLivingRoomSSID = "Tenda_48353C"
@@ -95,8 +96,6 @@ function wifiClicked()
 end
 
 wifiMenu:setClickCallback(wifiClicked)
-
-
 wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
 
 ---Audio device switch-----
