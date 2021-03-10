@@ -28,7 +28,7 @@ A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
    * Set window to 50% width left or right 
    * Move window to another display
    * Show a split window popup for splitting two apps on the screen
-* [Audio watcher](./audio-watcher.lua)
+* [Audio watcher/toggler](./audio-watcher.lua)
    * Toggle output audio device
    * Show a menu bar item with a prefix of the device. Click on the menu bar toggles the device
 * [Wifi watcher](./wifi-watcher.lua)
@@ -40,9 +40,9 @@ A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
    * Colorize the menu bar based on the chosen layout
 * [Translation popup](./translation-popup.lua)
    * Binds a hotkey which triggers a popup with Google Translate of the selected text
-* [Vpn](./vpn.lua)
+* [Vpn connection](./vpn.lua)
    * Binds a hotkey which triggers connection to VPN using Tunnelblick
-* [Jwt token](./jwt-token.lua)
+* [Jwt token paster](./jwt-token.lua)
    * Pastes a long JWT token
 * [Hold to quit](./hold-to-quit.lua)
    * Requires the user to hold CMD + Q in order to quit the app and shows a proper message
