@@ -44,7 +44,30 @@ alert.show(table.concat(buf))
 
 ---wifi watcher
 wifiMenu = hs.menubar.newWithPriority(2147483645)
-wifiMenu:setTitle(string.sub(hs.wifi.currentNetwork(), 0, 5))
+
+function lanConnectedText()
+    if hs.network.interfaceDetails(v4) then
+        if hs.network.interfaceDetails(v4)["AirPort"] then
+            return ""
+        else
+            return "LAN+"
+        end
+    end
+    return ""
+end
+
+function ssidChanged()
+    local wifiName = hs.wifi.currentNetwork()
+    if wifiName then
+        wifiMenu:setTitle(lanConnectedText() .. string.sub(wifiName, 0, 3))
+    else
+        wifiMenu:setTitle(lanConnectedText() .."Wifi OFF")
+    end
+end
+
+
+ssidChanged()
+--wifiMenu:setTitle(string.sub(hs.wifi.currentNetwork(), 0, 5))
 
 nsBedroomSSID = "IzvorInterneta"
 nsLivingRoomSSID = "Tenda_48353C"
@@ -73,16 +96,6 @@ end
 
 wifiMenu:setClickCallback(wifiClicked)
 
-wifiWatcher = nil
-
-function ssidChanged()
-    local wifiName = hs.wifi.currentNetwork()
-    if wifiName then
-        wifiMenu:setTitle(string.sub(wifiName, 0, 5))
-    else
-        wifiMenu:setTitle("Wifi OFF")
-    end
-end
 
 wifiWatcher = hs.wifi.watcher.new(ssidChanged):start()
 
