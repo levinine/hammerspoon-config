@@ -3,7 +3,7 @@
 ## Requirements
 
 - [Karabiner-elements](https://karabiner-elements.pqrs.org/) is required to bind Capslock key (or any other of your choice) to the Hyper key 
-  (combination of Shift, Option, Control and Command)
+  (combination of Shift, Option, Control and Command).
   - Install Karabiner-elements manually or via brew:
     ```
       brew install --cask karabiner-elements
@@ -27,6 +27,7 @@
 
 4. Run Hammerspoon. All the necessary Spoons will be downloaded, installed and configured automatically
 
+5. Voila. Hammerspoon docs can be found [here](https://www.hammerspoon.org/docs/index.html)
 
 ## Features
 * [Hyper bindings](./hyper-bindings.lua)
