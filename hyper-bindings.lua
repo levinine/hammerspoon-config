@@ -4,12 +4,13 @@ hs.hotkey.bind(HYPER, "0", function()
 end)
 hs.notify.new({title="Hammerspoon", informativeText="Config loaded"}):send()
 
-function hyperFocusOrOpen(key, app)
+function focusOrOpen(app)
     local focus = mkFocusByPreferredApplicationTitle(true, app)
-    function focusOrOpen()
-        return (focus() or hs.application.launchOrFocus(app))
-    end
-    hs.hotkey.bind(HYPER, key, focusOrOpen)
+    return (focus() or hs.application.launchOrFocus(app))
+end
+
+function hyperFocusOrOpen(key, app)
+    hs.hotkey.bind(HYPER, key, function() focusOrOpen(app) end)
 end
 
 -- creates callback function to select application windows by application name
@@ -55,9 +56,13 @@ local applicationHotkeys = {
     p = 'Postman',
     z = 'zoom.us',
     r = 'MacPass',
-    y = 'Jira',
+    --y = 'Jira',
     h = 'Hammerspoon',
 }
 for key, app in pairs(applicationHotkeys) do
     hyperFocusOrOpen(tostring(key), app)
 end
+
+
+
+

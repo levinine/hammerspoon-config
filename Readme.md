@@ -22,6 +22,11 @@
 ## Features
 * [Hyper bindings](./hyper-bindings.lua)
   * Binds multiple hotkeys to run various apps
+* [Web mode binder](./web-mode-binder.lua)
+  * Binder mode to:
+    * open pages in browser
+    * copy URL of current window
+    * extract Jira ticket number from current window
 * [Teams toggle mute](./teams-toggle-mute.lua)
   * Binds a hotkey which triggers toggle mute on Teams and focuses the application
 * [Window Management](./window-management.lua)
