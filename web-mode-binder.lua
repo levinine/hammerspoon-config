@@ -26,7 +26,7 @@ end
 webMode = hs.hotkey.modal.new(HYPER, 'q') --- enter the web mode
 function webMode:entered()
     function alertAndAutoClose ()
-        hs.alert'Entered web mode. J = Jira, C = Confluence, G = Github, E = Extract URL, T = Extract Jira Ticket number, Esc = Exit'
+        hs.alert'Entered web mode\n J = Jira\n C = Confluence\n G = Github\n E = Extract URL\n T = Extract Jira Ticket number\n Esc = Exit'
         hs.timer.delayed.new(3, function() webMode:exit() end):start() --auto exists after 3 sec
     end
     alertAndAutoClose()
