@@ -44,6 +44,9 @@
    * Binds a hotkey which triggers a popup with Google Translate of the selected text
 * [Vpn connection](./vpn.lua)
    * Binds a hotkey which triggers connection to VPN using Tunnelblick
+* [Text manipulation](./text-manipulation.lua)
+  * To uppercase
+  * To lowercase
 * [Jwt token paster](./jwt-token.lua)
    * Pastes a long JWT token
 * [Hold to quit](./hold-to-quit.lua)
@@ -52,3 +55,5 @@
    * Binds a hotkey used to locate your mouse on the screen
 * [Rounded corners](./rounded-corners.lua)
    * Renders nice mac friendly rounded corners on the screen
+* [Keypress show](./keypress-show.lua)
+  * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
