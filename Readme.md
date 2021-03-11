@@ -30,7 +30,7 @@
    * Set window to 50% width left or right 
    * Move window to another display
    * Show a split window popup for splitting two apps on the screen
-   * Move mouse to closest edge of the current window.
+   * Move mouse to the closest edge of the current window.
 * [Audio watcher/toggler](./audio-watcher.lua)
    * Toggle output audio device
    * Show a menu bar item with a prefix of the device. Click on the menu bar toggles the device
