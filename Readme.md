@@ -4,7 +4,10 @@
 
 - [Karabiner-elements](https://karabiner-elements.pqrs.org/) is required to bind Capslock key (or any other of your choice) to the Hyper key 
   (combination of Shift, Option, Control and Command)
-  - Install Karabiner-elements
+  - Install Karabiner-elements manually or via brew:
+    ```
+      brew install --cask karabiner-elements
+    ```
   - Open it and go to the tab Complex modifications.
   - Click Add rule in the bottom left corner.
   - Enable the option Change caps_lock to command+control+option+shift.
@@ -13,7 +16,9 @@
 ## How to use it
 
 1. Install [Hammerspoon](http://www.hammerspoon.org/)
-
+    ```   
+    brew install --cask hammerspoon
+    ```
 2. Clone this repository into your ~/.hammerspoon directory:
    
        git clone git@github.com:levinine/hammerspoon-config.git ~/.hammerspoon
