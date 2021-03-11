@@ -29,6 +29,27 @@ function debuglog(text)
     hs.console.printStyledtext("DEBUG: "..tostring(text))
 end
 
+
+
+----	Auto-reload config file. Called whenever a *.lua in the directory changes
+--function reloadConfig(files)
+--    doReload = false
+--    for _,file in pairs(files) do
+--        if file:sub(-4) == ".lua" then
+--            doReload = true
+--        end
+--    end
+--    if doReload then
+--        hs.reload()
+--    end
+--end
+---- Alert "Config loaded" here, happens not as we call reload, but as we load. Default alert durration=2 sec.
+--hs.alert.show("Config loaded")
+--
+--local myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+--local myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dev/git/hammerspoon/", reloadConfig):start()
+
+
 if hs.wasLoaded == nil then
     hs.wasLoaded = true
     table.insert(buf, "Hammerspoon loaded.")
