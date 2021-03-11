@@ -24,7 +24,13 @@ end
 
 -- Sequential keybindings, e.g. Hyper-Q,J for Jira
 webMode = hs.hotkey.modal.new(HYPER, 'q') --- enter the web mode
-function webMode:entered() hs.alert'Entered web mode. J = Jira, C = Confluence, G = Github, E = Extract URL, T = Extract Jira Ticket number, Esc = Exit' end
+function webMode:entered()
+    function alertAndAutoClose ()
+        hs.alert'Entered web mode. J = Jira, C = Confluence, G = Github, E = Extract URL, T = Extract Jira Ticket number, Esc = Exit'
+        hs.timer.delayed.new(3, function() webMode:exit() end):start() --auto exists after 3 sec
+    end
+    alertAndAutoClose()
+end
 function webMode:exited()  hs.alert'Exited web mode'  end
 webMode:bind('', 'j', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/secure/RapidBoard.jspa?rapidView=53&projectKey=PRODUCT', 'com.brave.Browser'); webMode:exit(); end)
 webMode:bind('', 'c', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/wiki/spaces/FOLEON/overview', 'com.brave.Browser'); webMode:exit(); end)
