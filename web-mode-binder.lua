@@ -23,11 +23,12 @@ function copyCurrentBraveUrl()
 end
 
 -- Sequential keybindings, e.g. Hyper-Q,J for Jira
-k = hs.hotkey.modal.new(HYPER, 'q') --- enter the web mode
-function k:entered() hs.alert'Entered web mode. J = Jira, C = Confluence, G = Github, E = Extract URL, T = Extract Jira Ticket number' end
-function k:exited()  hs.alert'Exited web mode'  end
-k:bind('', 'j', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/secure/RapidBoard.jspa?rapidView=53&projectKey=PRODUCT', 'com.brave.Browser'); k:exit(); end)
-k:bind('', 'c', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/wiki/spaces/FOLEON/overview', 'com.brave.Browser'); k:exit(); end)
-k:bind('', 'g', function() hs.urlevent.openURLWithBundle('https://github.com/Foleon', 'com.brave.Browser'); k:exit(); end)
-k:bind('', 't', function() copyCurrentBraveJiraTicketNumber(); k:exit(); end)
-k:bind('', 'e', function() copyCurrentBraveUrl(); k:exit(); end)
+webMode = hs.hotkey.modal.new(HYPER, 'q') --- enter the web mode
+function webMode:entered() hs.alert'Entered web mode. J = Jira, C = Confluence, G = Github, E = Extract URL, T = Extract Jira Ticket number, Esc = Exit' end
+function webMode:exited()  hs.alert'Exited web mode'  end
+webMode:bind('', 'j', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/secure/RapidBoard.jspa?rapidView=53&projectKey=PRODUCT', 'com.brave.Browser'); webMode:exit(); end)
+webMode:bind('', 'c', function() hs.urlevent.openURLWithBundle('https://foleon.atlassian.net/wiki/spaces/FOLEON/overview', 'com.brave.Browser'); webMode:exit(); end)
+webMode:bind('', 'g', function() hs.urlevent.openURLWithBundle('https://github.com/Foleon', 'com.brave.Browser'); webMode:exit(); end)
+webMode:bind('', 't', function() copyCurrentBraveJiraTicketNumber(); webMode:exit(); end)
+webMode:bind('', 'e', function() copyCurrentBraveUrl(); webMode:exit(); end)
+webMode:bind('', 'escape', function() webMode:exit() end)

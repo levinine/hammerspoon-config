@@ -64,7 +64,7 @@ alert.show(table.concat(buf))
 require 'audio-watcher'
 require 'wifi-watcher'
 require 'hyper-bindings'
-require 'web-mode'
+require 'web-mode-binder'
 require 'teams-toggle-mute'
 require 'window-management'
 require 'keyboard-layout-switcher'
