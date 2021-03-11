@@ -1,3 +1,5 @@
+--Copycat: https://github.com/babarrett/hammerspoon/blob/master/editSelection.lua
+
 -- getTextSelection()
 -- 	Gets currently selected text using Cmd+C
 --	Saves and restores the current pasteboard
