@@ -4,6 +4,10 @@
 
 - [Karabiner-elements](https://karabiner-elements.pqrs.org/) is required to bind Capslock key (or any other of your choice) to the Hyper key 
   (combination of Shift, Option, Control and Command)
+  - Install Karabiner-elements
+  - Open it and go to the tab Complex modifications.
+  - Click Add rule in the bottom left corner.
+  - Enable the option Change caps_lock to command+control+option+shift.
 - Go to System Preferences -> Security & Privacy -> Privacy and add both Hammerspoon and Karabiner-Elements in the Accessibility tab
 
 ## How to use it
