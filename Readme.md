@@ -75,7 +75,7 @@
 
 
 
-Inspiration, copycat, ideas, etc sources:
+Inspiration, copycat sources, ideas, etc sources:
 - https://github.com/babarrett/hammerspoon/
 - https://github.com/miromannino/miro-windows-manager
 - https://github.com/zzamboni/hammerspoon-config
