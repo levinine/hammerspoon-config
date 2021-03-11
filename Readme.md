@@ -1,4 +1,4 @@
-## A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) by [fstanisic](https://github.com/fstanisic)
+## A config for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
 ## Requirements
 
@@ -57,3 +57,15 @@
    * Renders nice mac friendly rounded corners on the screen
 * [Keypress show](./keypress-show.lua)
   * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
+
+
+
+Inspiration, copycat, ideas, etc sources:
+- https://github.com/babarrett/hammerspoon/
+- https://github.com/miromannino/miro-windows-manager
+- https://github.com/zzamboni/hammerspoon-config
+- https://github.com/cmsj/hammerspoon-config
+- https://github.com/kev-zheng/hammerspoon
+- https://github.com/evantravers/hammerspoon-config
+- https://gist.github.com/ysimonson/fea48ee8a68ed2cbac12473e87134f58
+- https://www.reddit.com/r/hammerspoon/
