@@ -27,7 +27,9 @@
 
 4. Run Hammerspoon. All the necessary Spoons will be downloaded, installed and configured automatically
 
-5. Voila. Hammerspoon docs can be found [here](https://www.hammerspoon.org/docs/index.html)
+5. Voila. 
+   Hammerspoon docs can be found [here](https://www.hammerspoon.org/docs/index.html) 
+   Hammerspoon website can be found [here](https://www.hammerspoon.org/)
 
 ## Features
 * [Hyper bindings](./hyper-bindings.lua)
