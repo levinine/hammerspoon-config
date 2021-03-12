@@ -21,7 +21,9 @@ end
 hs.hotkey.bind(HYPER, "]", toggle_audio_output())
 
 function getCurrentOutputDevicePrefix()
-    return string.sub(hs.audiodevice.defaultOutputDevice():name(), 0, 3)
+    if(hs.audiodevice.defaultOutputDevice() ~= nil & hs.audiodevice.defaultOutputDevice():name() ~= nil) then
+        return string.sub(hs.audiodevice.defaultOutputDevice():name(), 0, 3)
+    end
 end
 
 function audioChanged()
