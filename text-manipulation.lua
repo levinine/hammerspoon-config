@@ -29,4 +29,4 @@ function toLowercase()
 end
 
 hs.hotkey.bind(HYPER, "u", toUppercase)
-hs.hotkey.bind(HYPER, "l", toLowercase)
+hs.hotkey.bind(HYPER, "i", toLowercase)
