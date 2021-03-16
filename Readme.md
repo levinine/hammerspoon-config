@@ -41,6 +41,9 @@
     * extract Jira ticket number from current window
 * [Teams toggle mute](./teams-toggle-mute.lua)
   * Binds a hotkey which triggers toggle mute on Teams and focuses the application
+* [Keyboard layout switcher](./keyboard-layout-switcher.lua)
+  * Toggle different keyboard layouts
+  * Colorize the menu bar based on the chosen layout
 * [Window Management](./window-management.lua)
    * Set window to full-screen mode
    * Maximize a window (not the full-screen mode)
@@ -48,6 +51,21 @@
    * Move window to another display
    * Show a split window popup for splitting two apps on the screen
    * Move mouse to the closest edge of the current window.
+* [Translation popup](./translation-popup.lua)
+  * Binds a hotkey which triggers a popup with Google Translate of the selected text
+* [Vpn connection](./vpn.lua)
+  * Binds a hotkey which triggers connection to VPN using Tunnelblick
+* [Text manipulation](./text-manipulation.lua)
+  * To uppercase
+  * To lowercase
+* [Jwt token paster](./jwt-token.lua)
+  * Pastes a long JWT token
+* [Hold to quit](./hold-to-quit.lua)
+  * Requires the user to hold CMD + Q in order to quit the app and shows a proper message
+* [Mouse finder](./mouse-finder.lua)
+  * Binds a hotkey used to locate your mouse on the screen
+* [Keypress show](./keypress-show.lua)
+  * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
 * [Audio watcher/toggler](./audio-watcher.lua)
    * Toggle output audio device
    * Show a menu bar item with a prefix of the device. Click on the menu bar toggles the device
@@ -55,30 +73,10 @@
    * Toggle connected Wi-Fi network
    * Show a menu bar item showing: LAN+WifiNetworkPrefix or just WifiNetworkPrefix if LAN is not connected . Click on the menu bar toggles the 
      Wi-Fi network
-* [Keyboard layout switcher](./keyboard-layout-switcher.lua)
-   * Toggle different keyboard layouts
-   * Colorize the menu bar based on the chosen layout
-* [Translation popup](./translation-popup.lua)
-   * Binds a hotkey which triggers a popup with Google Translate of the selected text
-* [Vpn connection](./vpn.lua)
-   * Binds a hotkey which triggers connection to VPN using Tunnelblick
-* [Text manipulation](./text-manipulation.lua)
-  * To uppercase
-  * To lowercase
-* [Jwt token paster](./jwt-token.lua)
-   * Pastes a long JWT token
-* [Hold to quit](./hold-to-quit.lua)
-   * Requires the user to hold CMD + Q in order to quit the app and shows a proper message
-* [Mouse finder](./mouse-finder.lua)
-   * Binds a hotkey used to locate your mouse on the screen
 * [Rounded corners](./rounded-corners.lua)
    * Renders nice mac friendly rounded corners on the screen
-* [Keypress show](./keypress-show.lua)
-  * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
 
-
-
-Inspiration, copycat sources, ideas, etc sources:
+## Inspiration, copycat sources, ideas, etc sources:
 - https://github.com/babarrett/hammerspoon/
 - https://github.com/miromannino/miro-windows-manager
 - https://github.com/zzamboni/hammerspoon-config
