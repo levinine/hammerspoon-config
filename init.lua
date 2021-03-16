@@ -61,17 +61,17 @@ alert.show(table.concat(buf))
 
 ---init
 
-require 'audio-watcher'
-require 'wifi-watcher'
 require 'hyper-bindings'
 require 'web-mode-binder'
 require 'teams-toggle-mute'
 require 'window-management'
 require 'keyboard-layout-switcher'
 require 'vpn'
-require 'mouse-finder'
-require 'rounded-corners'
 require 'translation-popup'
 require 'hold-to-quit'
 require 'text-manipulation'
+require 'mouse-finder'
+require 'audio-watcher'
+require 'wifi-watcher'
+require 'rounded-corners'
 --require 'keypress-show'
