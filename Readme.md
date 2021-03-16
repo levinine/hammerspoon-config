@@ -64,8 +64,6 @@
   * Requires the user to hold CMD + Q in order to quit the app and shows a proper message
 * [Mouse finder](./mouse-finder.lua)
   * Binds a hotkey used to locate your mouse on the screen
-* [Keypress show](./keypress-show.lua)
-  * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
 * [Audio watcher/toggler](./audio-watcher.lua)
    * Toggle output audio device
    * Show a menu bar item with a prefix of the device. Click on the menu bar toggles the device
@@ -75,6 +73,8 @@
      Wi-Fi network
 * [Rounded corners](./rounded-corners.lua)
    * Renders nice mac friendly rounded corners on the screen
+* [Keypress show](./keypress-show.lua)
+  * Provide an easy way of showing keystrokes on the screen. It's inspired by other tools like Keycastr.
 
 ## Inspiration, copycat sources, ideas, etc sources:
 - https://github.com/babarrett/hammerspoon/
