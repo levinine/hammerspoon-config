@@ -41,16 +41,16 @@
     * extract Jira ticket number from current window
 * [Teams toggle mute](./teams-toggle-mute.lua)
   * Binds a hotkey which triggers toggle mute on Teams and focuses the application
+* [Window Management](./window-management.lua)
+  * Set window to full-screen mode
+  * Maximize a window (not the full-screen mode)
+  * Set window to 50% width left or right
+  * Move window to another display
+  * Show a split window popup for splitting two apps on the screen
+  * Move mouse to the closest edge of the current window.
 * [Keyboard layout switcher](./keyboard-layout-switcher.lua)
   * Toggle different keyboard layouts
   * Colorize the menu bar based on the chosen layout
-* [Window Management](./window-management.lua)
-   * Set window to full-screen mode
-   * Maximize a window (not the full-screen mode)
-   * Set window to 50% width left or right 
-   * Move window to another display
-   * Show a split window popup for splitting two apps on the screen
-   * Move mouse to the closest edge of the current window.
 * [Translation popup](./translation-popup.lua)
   * Binds a hotkey which triggers a popup with Google Translate of the selected text
 * [Vpn connection](./vpn.lua)
