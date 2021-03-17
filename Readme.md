@@ -85,3 +85,7 @@
 - https://github.com/evantravers/hammerspoon-config
 - https://gist.github.com/ysimonson/fea48ee8a68ed2cbac12473e87134f58
 - https://www.reddit.com/r/hammerspoon/
+- https://medium.com/@robhowlett/hammerspoon-the-best-mac-software-youve-never-heard-of-40c2df6db0f8
+- https://spinscale.de/posts/2016-11-08-creating-a-productive-osx-environment-hammerspoon.html
+- https://gist.github.com/spartanatreyu/850788a0441e1c5565668a35ed9a1dfc
+- https://github.com/Linell/hammerspoon-config
